@@ -19,6 +19,9 @@ class Result(BaseModel):
     confidence: float
 # this creates an instance for the endpoint
 app = FastAPI()
+@app.get('/')
+def read_root():
+    return {'message': 'This is not supposed to be used like this, use POST'}
 # response_model is a pydantic BaseModel, not a machine learning model
 # is the POST response that we are defining with class Result(BaseModel)
 @app.post('/predict', response_model=Result )
